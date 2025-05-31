@@ -11,7 +11,7 @@ import (
 
 // Struct to parse the JSON response
 type WeatherResponse struct {
-	Name string `json:"temp"`
+	Name string `json:"name"`
 	Main struct {
 		Temp     float64 `json:"temp"`
 		Humidity int     `json:"humidity"`
@@ -28,10 +28,11 @@ func main() {
 	}
 
 	city := os.Args[1]
-	apiKey := "26920b5b4d2aefaab73cf31efacc1800"
+	apiKey := "26920b5b4d2aefaab73cf31efacc1800" // Replace with your API key
 
 	url := fmt.Sprintf(
-		"https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric", city, apiKey,
+		"https://api.openweathermap.org/data/2.5/weather?q=%s&appid=%s&units=metric",
+		city, apiKey,
 	)
 
 	resp, err := http.Get(url)
