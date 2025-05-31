@@ -4,26 +4,26 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"os"
-	"io/ioutil"
 )
 
 // Struct to parse the JSON response
 type WeatherResponse struct {
 	Name string `json:"temp"`
 	Main struct {
-		Temp float64 `json:"temp"`
-		Humidity int `json:"humidity"`
+		Temp     float64 `json:"temp"`
+		Humidity int     `json:"humidity"`
 	} `json:"main"`
 	Weather []struct {
-		Description string `json`		
+		Description string `json:"description"`
 	} `json:"weather"`
 }
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println(Usage: weather-cli <city-name>"")
+		fmt.Println("Usage: weather-cli <city-name>")
 		os.Exit(1)
 	}
 
